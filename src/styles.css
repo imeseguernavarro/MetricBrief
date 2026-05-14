@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #171a2b;
+  background:
+    radial-gradient(circle at top left, rgba(255, 0, 153, 0.08), transparent 24%),
+    radial-gradient(circle at 88% 14%, rgba(131, 56, 236, 0.08), transparent 22%),
+    linear-gradient(180deg, #fcfbff 0%, #f7f7fb 46%, #f4f6fb 100%);
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.surface-panel {
+  border: 1px solid rgba(231, 232, 241, 0.92);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 48px rgba(24, 33, 56, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+.surface-dark {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    linear-gradient(180deg, rgba(12, 13, 22, 0.98), rgba(20, 18, 33, 0.98)),
+    #0f1119;
+  box-shadow: 0 24px 56px rgba(8, 10, 20, 0.24);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(219, 221, 234, 0.9);
+  background: rgba(255, 255, 255, 0.88);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #7a8197;
+}
+
+.accent-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
+  color: white;
+}
+
+.soft-divider {
+  border-color: rgba(231, 232, 241, 0.9);
+}
+
+.page-enter {
+  animation: page-enter 500ms ease-out both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scrollbar-soft::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-soft::-webkit-scrollbar-thumb {
+  background: #c9d1df;
+  border-radius: 999px;
+}
+
+.public-page {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(56, 189, 248, 0.1), transparent 20%),
+    radial-gradient(circle at 84% 10%, rgba(79, 70, 229, 0.08), transparent 18%),
+    linear-gradient(180deg, #fbfdff 0%, #f8fafc 100%);
+}
+
+.public-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(34px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.public-orb-one {
+  top: 120px;
+  left: -80px;
+  width: 220px;
+  height: 220px;
+  background: rgba(37, 99, 235, 0.16);
+}
+
+.public-orb-two {
+  top: 420px;
+  right: -100px;
+  width: 260px;
+  height: 260px;
+  background: rgba(79, 70, 229, 0.14);
+}
+
+.public-orb-three {
+  bottom: 160px;
+  left: 8%;
+  width: 180px;
+  height: 180px;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.login-mesh {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(56, 189, 248, 0.34), transparent 28%),
+    radial-gradient(circle at 78% 24%, rgba(79, 70, 229, 0.34), transparent 32%),
+    radial-gradient(circle at 62% 74%, rgba(37, 99, 235, 0.22), transparent 30%),
+    linear-gradient(145deg, #0f172a 0%, #152140 45%, #1d2f61 100%);
+  background-size: 120% 120%;
+  animation: mesh-shift 14s ease-in-out infinite alternate;
+}
+
+.login-float {
+  animation: login-float 5.8s ease-in-out infinite;
+}
+
+.login-float-delay {
+  animation-delay: 1.2s;
+}
+
+.login-live-dot {
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+
+.button-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%);
+  animation: button-shimmer 1.2s linear infinite;
+}
+
+@keyframes mesh-shift {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes login-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.38);
+  }
+
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes button-shimmer {
+  100% {
+    transform: translateX(120%);
+  }
+}
