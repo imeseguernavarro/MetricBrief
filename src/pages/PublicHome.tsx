@@ -10,7 +10,7 @@ const heroMetrics = [
 ];
 
 const statTargets = [
-  { id: "posts", prefix: "+", suffix: "K", value: 120, label: "Publicaciones análizadas en paneles multired." },
+  { id: "posts", prefix: "+", suffix: "K", value: 120, label: "Publicaciones analizadas en paneles multired." },
   { id: "engagement", prefix: "", suffix: "%", value: 38, label: "Mejora media en engagement tras optimizar contenido." },
   { id: "platforms", prefix: "", suffix: "", value: 12, label: "Plataformas conectadas dentro de la visión del producto." },
   { id: "tracking", prefix: "", suffix: "/7", value: 24, label: "Seguimiento continuo de métricas críticas y alertas." },
