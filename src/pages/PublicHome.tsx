@@ -80,6 +80,21 @@ export function PublicHome() {
     Object.fromEntries(statTargets.map((item) => [item.id, 0]))
   );
 
+  // Waitlist form state
+  const [email, setEmail] = useState("");
+  const [waitlistStatus, setWaitlistStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  function handleWaitlist(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    setWaitlistStatus("loading");
+    // Simula envío — reemplaza con tu lógica real (Supabase, Mailchimp, etc.)
+    setTimeout(() => {
+      setWaitlistStatus("success");
+      setEmail("");
+    }, 1200);
+  }
+
   useEffect(() => {
     if (!statsRef.current) return;
     const observer = new IntersectionObserver(
@@ -126,6 +141,7 @@ export function PublicHome() {
         <div className="public-orb public-orb-three" />
       </div>
 
+      {/* ── HEADER ── */}
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[rgba(248,250,252,0.82)] backdrop-blur-xl">
         <div className="mx-auto flex min-h-[78px] w-full max-w-[1180px] items-center justify-between gap-5 px-5 md:px-8">
           <a href="#top" className="flex min-w-0 items-center gap-3">
@@ -141,16 +157,18 @@ export function PublicHome() {
           <nav className="hidden items-center gap-6 text-sm font-semibold text-slate-600 lg:flex">
             <a href="#funcionalidades" className="transition hover:text-slate-900">Funcionalidades</a>
             <a href="#plataformas" className="transition hover:text-slate-900">Plataformas</a>
-            <a href="#precios" className="transition hover:text-slate-900">Precios</a>
-            <a href="#contacto" className="transition hover:text-slate-900">Contacto</a>
+            <a href="#waitlist" className="transition hover:text-slate-900">Lista de espera</a>
           </nav>
 
-          <Link to="/login" className="accent-pill rounded-[14px] px-5 py-3 text-sm font-bold shadow-soft transition hover:-translate-y-0.5">
-            Solicitar demo
-          </Link>
+          {/* Badge "En desarrollo" en lugar del botón de demo */}
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-xs font-bold text-amber-700">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+            En desarrollo
+          </span>
         </div>
       </header>
 
+      {/* ── HERO ── */}
       <section id="top" className="px-5 pb-12 pt-16 md:px-8 md:pt-20">
         <div className="mx-auto grid w-full max-w-[1180px] items-center gap-11 lg:grid-cols-[1.08fr_0.92fr]">
           <div className="js-reveal reveal-up">
@@ -164,10 +182,15 @@ export function PublicHome() {
             <p className="mt-5 max-w-[640px] text-lg leading-8 text-slate-600">
               InsightHub centraliza alcance, engagement, seguidores, comparativas y alertas en una sola interfaz para que marketing, contenido y analitica trabajen con la misma lectura.
             </p>
+
+            {/* CTA hero: solo scroll a waitlist */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link to="/login" className="accent-pill rounded-[14px] px-6 py-4 text-base font-bold shadow-soft transition hover:-translate-y-0.5">
-                Solicitar demo
-              </Link>
+              <a
+                href="#waitlist"
+                className="accent-pill rounded-[14px] px-6 py-4 text-base font-bold shadow-soft transition hover:-translate-y-0.5"
+              >
+                Unirme a la lista de espera
+              </a>
               <a href="#funcionalidades" className="inline-flex items-center gap-2 rounded-[14px] border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-800 shadow-sm transition hover:-translate-y-0.5">
                 Ver funcionalidades
                 <ArrowRight size={18} />
@@ -175,6 +198,7 @@ export function PublicHome() {
             </div>
           </div>
 
+          {/* Dashboard preview card — sin cambios */}
           <div className="js-reveal reveal-up rounded-[30px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.84),rgba(255,255,255,0.94))] p-5 shadow-[0_24px_60px_rgba(37,99,235,0.10)]">
             <div className="relative overflow-hidden rounded-[24px] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]">
               <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
@@ -230,6 +254,7 @@ export function PublicHome() {
         </div>
       </section>
 
+      {/* ── STATS ── */}
       <section className="px-5 pb-4 md:px-8">
         <div ref={statsRef} className="mx-auto grid w-full max-w-[1180px] gap-4 md:grid-cols-2 xl:grid-cols-4">
           {statTargets.map((item) => (
@@ -245,6 +270,7 @@ export function PublicHome() {
         </div>
       </section>
 
+      {/* ── FUNCIONALIDADES ── */}
       <section id="funcionalidades" className="px-5 py-24 md:px-8">
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="section-title js-reveal reveal-up">
@@ -277,6 +303,7 @@ export function PublicHome() {
         </div>
       </section>
 
+      {/* ── PLATAFORMAS ── */}
       <section id="plataformas" className="px-5 pb-16 md:px-8">
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="section-title js-reveal reveal-up">
@@ -301,51 +328,62 @@ export function PublicHome() {
         </div>
       </section>
 
-      <section id="precios" className="px-5 py-10 md:px-8">
-        <div className="mx-auto grid w-full max-w-[1180px] gap-[18px] lg:grid-cols-[0.94fr_1.06fr]">
-          <div className="surface js-reveal reveal-up rounded-[24px] p-[26px]">
-            <h3 className="font-['Sora'] text-2xl font-extrabold text-slate-900">Precios orientados a equipos que necesitan visibilidad y control.</h3>
-            <p className="mt-3 text-base leading-7 text-slate-600">
-              InsightHub se plantea como un SaaS de analitica unificada con enfoque B2B. El precio final dependera de volumen, canales conectados, automatizaciones y necesidades de reporting.
-            </p>
-          </div>
-          <div className="surface js-reveal reveal-up rounded-[24px] p-[26px]">
-            <h3 className="font-['Sora'] text-2xl font-extrabold text-slate-900">Modelo comercial flexible</h3>
-            <p className="mt-3 text-base leading-7 text-slate-600">
-              Desde equipos pequenos que necesitan claridad operativa hasta marcas o agencias que quieren una lectura transversal de rendimiento y crecimiento.
-            </p>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <div className="rounded-[18px] border border-slate-200 bg-slate-50 p-[18px]">
-                <div className="text-xs font-bold text-slate-500">Plan Growth</div>
-                <strong className="mt-3 block text-[28px] font-extrabold text-slate-900">Desde 149 EUR</strong>
-                <p className="mt-2 text-sm leading-6 text-slate-500">Equipos que centralizan lectura y reporting.</p>
-              </div>
-              <div className="rounded-[18px] border border-slate-200 bg-slate-50 p-[18px]">
-                <div className="text-xs font-bold text-slate-500">Plan Scale</div>
-                <strong className="mt-3 block text-[28px] font-extrabold text-slate-900">Custom</strong>
-                <p className="mt-2 text-sm leading-6 text-slate-500">Multi-equipo, multi-marca y reporting avanzado.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacto" className="px-5 py-24 md:px-8">
+      {/* ── WAITLIST ── */}
+      <section id="waitlist" className="px-5 py-16 md:px-8">
         <div className="mx-auto w-full max-w-[1180px]">
-          <div className="js-reveal reveal-up rounded-[32px] bg-[linear-gradient(135deg,#2563EB,#4F46E5)] px-7 py-10 text-white shadow-[0_24px_60px_rgba(37,99,235,0.20)] md:px-10">
-            <h2 className="font-['Sora'] text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1]">Centraliza el analisis de tus redes con una interfaz pensada para decidir mejor.</h2>
-            <p className="mt-4 max-w-[700px] text-base leading-8 text-white/80">
-              Solicita una demo y descubre como InsightHub puede ordenar metricas, comparativas y alertas en una sola capa operativa para tu equipo.
+          <div className="js-reveal reveal-up rounded-[32px] bg-[linear-gradient(135deg,#2563EB,#4F46E5)] px-7 py-14 text-white shadow-[0_24px_60px_rgba(37,99,235,0.20)] md:px-12">
+
+            {/* Badge "En desarrollo" */}
+            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/80 backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" />
+              Producto en desarrollo activo
+            </span>
+
+            <h2 className="font-['Sora'] text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] max-w-[700px]">
+              InsightHub llega pronto.<br/>Sé el primero en probarlo.
+            </h2>
+            <p className="mt-4 max-w-[560px] text-base leading-8 text-white/75">
+              Estamos construyendo la capa de analítica unificada que necesitan equipos y creadores. Deja tu email y te avisamos cuando abramos acceso anticipado.
             </p>
-            <div className="mt-6">
-              <Link to="/login" className="inline-flex rounded-[14px] bg-white px-6 py-4 text-base font-bold text-slate-900 shadow-[0_18px_36px_rgba(15,23,42,0.12)] transition hover:-translate-y-0.5">
-                Empezar ahora
-              </Link>
-            </div>
+
+            {/* Form */}
+            <form onSubmit={handleWaitlist} className="mt-8 flex max-w-[500px] flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                placeholder="tu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={waitlistStatus === "success"}
+                className="flex-1 rounded-[14px] border border-white/20 bg-white/10 px-5 py-4 text-sm font-medium text-white placeholder-white/40 backdrop-blur-sm outline-none transition focus:border-white/50 focus:bg-white/15 disabled:opacity-60"
+              />
+              <button
+                type="submit"
+                disabled={waitlistStatus === "loading" || waitlistStatus === "success"}
+                className="rounded-[14px] bg-white px-6 py-4 text-sm font-bold text-blue-700 shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 whitespace-nowrap"
+              >
+                {waitlistStatus === "loading" && "Guardando…"}
+                {waitlistStatus === "success" && "✓ Apuntado"}
+                {waitlistStatus === "idle" && "Apuntarme"}
+                {waitlistStatus === "error" && "Reintentar"}
+              </button>
+            </form>
+
+            {waitlistStatus === "success" && (
+              <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-emerald-300">
+                <CheckCircle2 size={16} />
+                Perfecto, te avisamos cuando abramos acceso anticipado.
+              </p>
+            )}
+
+            {/* Social proof */}
+            <p className="mt-6 text-xs text-white/45">
+              Sin spam. Solo una notificación cuando esté listo.
+            </p>
           </div>
         </div>
       </section>
 
+      {/* ── FOOTER ── */}
       <footer className="bg-[linear-gradient(180deg,#111827_0%,#0F172A_100%)] px-5 py-9 text-white/75 md:px-8">
         <div className="mx-auto flex w-full max-w-[1180px] flex-wrap items-center justify-between gap-5">
           <div className="flex items-center gap-3">
