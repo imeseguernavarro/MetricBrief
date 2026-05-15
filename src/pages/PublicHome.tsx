@@ -10,42 +10,42 @@ const heroMetrics = [
 ];
 
 const statTargets = [
-  { id: "posts", prefix: "+", suffix: "K", value: 120, label: "publicaciones analizadas en paneles multired." },
+  { id: "posts", prefix: "+", suffix: "K", value: 120, label: "publicaciones análizadas en paneles multired." },
   { id: "engagement", prefix: "", suffix: "%", value: 38, label: "mejora media en engagement tras optimizar contenido." },
   { id: "platforms", prefix: "", suffix: "", value: 12, label: "plataformas conectadas dentro de la vision del producto." },
-  { id: "tracking", prefix: "", suffix: "/7", value: 24, label: "seguimiento continuo de metricas criticas y alertas." },
+  { id: "tracking", prefix: "", suffix: "/7", value: 24, label: "seguimiento continuo de métricas críticas y alertas." },
 ];
 
 const benefits = [
   {
-    title: "Metricas centralizadas",
+    title: "Métricas centralizadas",
     description: "Consulta rendimiento, crecimiento y engagement desde una sola fuente de verdad sin saltar entre apps.",
     icon: ChartNoAxesCombined,
   },
   {
     title: "Comparativa entre redes",
-    description: "Entiende que canal responde mejor a cada formato y donde conviene empujar inversion o contenido.",
+    description: "Entiende que canal responde mejor a cada formato y donde conviene empujar inversión o contenido.",
     icon: Boxes,
   },
   {
     title: "Informes automaticos",
-    description: "Resume KPIs, evolucion y variaciones clave con un formato listo para equipos, direccion y clientes.",
+    description: "Resume KPIs, evolución y variaciones clave con un formato listo para equipos, dirección y clientes.",
     icon: Sparkles,
     highlighted: true,
   },
   {
-    title: "Deteccion de tendencias",
-    description: "Identifica picos de alcance, senales de saturacion y formatos que estan ganando traccion.",
+    title: "Detección de tendencias",
+    description: "Identifica picos de alcance, señales de saturación y formatos que están ganando tracción.",
     icon: LayoutGrid,
   },
   {
     title: "Alertas inteligentes",
-    description: "Recibe avisos cuando una metrica se desvia, un contenido destaca o una oportunidad merece atencion.",
+    description: "Recibe avisos cuando una métrica se desvía, un contenido destaca o una oportunidad merece atención.",
     icon: Bell,
   },
   {
     title: "Dashboard para equipos",
-    description: "Comparte una lectura comun entre estrategia, contenido, paid media y reporting ejecutivo.",
+    description: "Comparte una lectura común entre estrategia, contenido, paid media y reporting ejecutivo.",
     icon: Users2,
   },
 ];
