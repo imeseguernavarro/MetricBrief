@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { BrandLogo } from "../components/BrandLogo";
 
 const sections = [
   {
@@ -34,8 +33,11 @@ export function Terms() {
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(255,193,146,0.28),transparent_26%),linear-gradient(180deg,#f8efe8_0%,#f7f8fc_46%,#eef4fb_100%)]">
       <div className="mx-auto max-w-5xl px-6 py-6 md:px-10">
         <header className="flex flex-col gap-4 border-b border-white/60 pb-6 md:flex-row md:items-center md:justify-between">
-          <Link to="/" className="inline-flex rounded-[18px] bg-white/90 px-3 py-2 shadow-[0_10px_30px_rgba(79,70,229,0.12)]">
-            <BrandLogo width={164} className="h-auto w-[164px]" />
+          <Link to="/" className="inline-flex items-center gap-3">
+            <div>
+              <span className="block font-['Sora'] text-2xl font-extrabold text-ink">MetricBrief</span>
+              <span className="text-sm text-slate-500">Cross-platform intelligence</span>
+            </div>
           </Link>
           <nav className="flex flex-wrap gap-3 text-sm font-semibold text-slate-600">
             <Link className="rounded-full px-3 py-2 transition hover:bg-white/70" to="/">

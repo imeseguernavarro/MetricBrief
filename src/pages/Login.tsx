@@ -1,7 +1,6 @@
 import { AlertCircle, Check, CheckCircle2, Eye, EyeOff, Lock, Mail, Music2, ShieldCheck, Youtube } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BrandLogo } from "../components/BrandLogo";
 
 type AuthMode = "signin" | "signup";
 
@@ -156,8 +155,11 @@ export function Login({
 
           <div className="relative z-10 flex w-full flex-col justify-between p-10 xl:p-14">
             <div className="max-w-[520px]">
-              <Link to="/" className="inline-flex rounded-[22px] bg-white/95 px-4 py-3 shadow-[0_18px_44px_rgba(15,23,42,0.26)]">
-                <BrandLogo width={184} className="h-auto w-[184px]" />
+              <Link to="/" className="inline-flex items-center gap-3">
+                <div>
+                  <div className="font-['Sora'] text-2xl font-extrabold text-white">MetricBrief</div>
+                  <div className="mt-1 text-sm font-medium text-slate-300">Unified social media analytics</div>
+                </div>
               </Link>
 
               <div className="mt-16">
@@ -234,8 +236,11 @@ export function Login({
         <section className="flex min-h-screen items-center justify-center px-5 py-8 md:px-8">
           <div className="w-full max-w-[540px]">
             <div className="mb-8 flex items-center justify-between lg:hidden">
-              <Link to="/" className="inline-flex rounded-[18px] bg-white px-3 py-2 shadow-[0_10px_30px_rgba(79,70,229,0.12)]">
-                <BrandLogo width={154} className="h-auto w-[154px]" />
+              <Link to="/" className="inline-flex items-center gap-3">
+                <div>
+                  <div className="font-['Sora'] text-xl font-extrabold text-slate-900">MetricBrief</div>
+                  <div className="text-xs font-semibold text-slate-500">Unified social media analytics</div>
+                </div>
               </Link>
             </div>
 

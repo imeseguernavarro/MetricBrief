@@ -1,7 +1,16 @@
-import { ArrowRight, Bell, Boxes, ChartNoAxesCombined, CheckCircle2, LayoutGrid, Sparkles, Users2 } from "lucide-react";
+import {
+  ArrowRight,
+  Bell,
+  Boxes,
+  ChartNoAxesCombined,
+  CheckCircle2,
+  LayoutGrid,
+  Sparkles,
+  Users2,
+} from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { BrandLogo } from "../components/BrandLogo";
+import headerLogo from "../assets/metricbrief-header-v4.png";
 
 const heroMetrics = [
   { label: "TikTok", value: "+18.4%", detail: "Alcance 2.8M", trend: "+32K seguidores", tone: "success" as const },
@@ -12,40 +21,40 @@ const heroMetrics = [
 const statTargets = [
   { id: "posts", prefix: "+", suffix: "K", value: 120, label: "Publicaciones analizadas en paneles multired." },
   { id: "engagement", prefix: "", suffix: "%", value: 38, label: "Mejora media en engagement tras optimizar contenido." },
-  { id: "platforms", prefix: "", suffix: "", value: 12, label: "Plataformas conectadas dentro de la visión del producto." },
-  { id: "tracking", prefix: "", suffix: "/7", value: 24, label: "Seguimiento continuo de métricas críticas y alertas." },
+  { id: "platforms", prefix: "", suffix: "", value: 12, label: "Plataformas conectadas dentro de la vision del producto." },
+  { id: "tracking", prefix: "", suffix: "/7", value: 24, label: "Seguimiento continuo de metricas criticas y alertas." },
 ];
 
 const benefits = [
   {
-    title: "Métricas centralizadas",
+    title: "Metricas centralizadas",
     description: "Consulta rendimiento, crecimiento y engagement desde una sola fuente de verdad sin saltar entre apps.",
     icon: ChartNoAxesCombined,
   },
   {
     title: "Comparativa entre redes",
-    description: "Entiende que canal responde mejor a cada formato y donde conviene empujar inversión o contenido.",
+    description: "Entiende que canal responde mejor a cada formato y donde conviene empujar inversion o contenido.",
     icon: Boxes,
   },
   {
     title: "Informes automaticos",
-    description: "Resume KPIs, evolución y variaciones clave con un formato listo para equipos, dirección y clientes.",
+    description: "Resume KPIs, evolucion y variaciones clave con un formato listo para equipos, direccion y clientes.",
     icon: Sparkles,
     highlighted: true,
   },
   {
-    title: "Detección de tendencias",
-    description: "Identifica picos de alcance, señales de saturación y formatos que están ganando tracción.",
+    title: "Deteccion de tendencias",
+    description: "Identifica picos de alcance, senales de saturacion y formatos que estan ganando traccion.",
     icon: LayoutGrid,
   },
   {
     title: "Alertas inteligentes",
-    description: "Recibe avisos cuando una métrica se desvía, un contenido destaca o una oportunidad merece atención.",
+    description: "Recibe avisos cuando una metrica se desvia, un contenido destaca o una oportunidad merece atencion.",
     icon: Bell,
   },
   {
     title: "Dashboard para equipos",
-    description: "Comparte una lectura común entre estrategia, contenido, paid media y reporting ejecutivo.",
+    description: "Comparte una lectura comun entre estrategia, contenido, paid media y reporting ejecutivo.",
     icon: Users2,
   },
 ];
@@ -79,16 +88,13 @@ export function PublicHome() {
   const [counts, setCounts] = useState<Record<string, number>>(() =>
     Object.fromEntries(statTargets.map((item) => [item.id, 0]))
   );
-
-  // Waitlist form state
   const [email, setEmail] = useState("");
   const [waitlistStatus, setWaitlistStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  function handleWaitlist(e: React.FormEvent) {
-    e.preventDefault();
+  function handleWaitlist(event: React.FormEvent) {
+    event.preventDefault();
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
     setWaitlistStatus("loading");
-    // Simula envío — reemplaza con tu lógica real (Supabase, Mailchimp, etc.)
     setTimeout(() => {
       setWaitlistStatus("success");
       setEmail("");
@@ -119,12 +125,8 @@ export function PublicHome() {
     const tick = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setCounts(
-        Object.fromEntries(statTargets.map((item) => [item.id, Math.floor(item.value * eased)]))
-      );
-      if (progress < 1) {
-        raf = requestAnimationFrame(tick);
-      }
+      setCounts(Object.fromEntries(statTargets.map((item) => [item.id, Math.floor(item.value * eased)])));
+      if (progress < 1) raf = requestAnimationFrame(tick);
     };
 
     raf = requestAnimationFrame(tick);
@@ -141,11 +143,10 @@ export function PublicHome() {
         <div className="public-orb public-orb-three" />
       </div>
 
-      {/* ── HEADER ── */}
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[rgba(248,250,252,0.82)] backdrop-blur-xl">
-        <div className="mx-auto flex min-h-[78px] w-full max-w-[1180px] items-center justify-between gap-5 px-5 md:px-8">
+        <div className="mx-auto flex min-h-[82px] w-full max-w-[1180px] items-center justify-between gap-5 px-5 md:px-8">
           <a href="#top" className="flex min-w-0 items-center">
-            <BrandLogo width={168} className="h-auto w-[168px]" />
+            <img src={headerLogo} alt="MetricBrief" className="h-auto w-[188px] md:w-[224px]" />
           </a>
 
           <nav className="hidden items-center gap-6 text-sm font-semibold text-slate-600 lg:flex">
@@ -154,7 +155,6 @@ export function PublicHome() {
             <a href="#waitlist" className="transition hover:text-slate-900">Lista de espera</a>
           </nav>
 
-          {/* Badge "En desarrollo" en lugar del botón de demo */}
           <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-xs font-bold text-amber-700">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
             En desarrollo
@@ -162,7 +162,6 @@ export function PublicHome() {
         </div>
       </header>
 
-      {/* ── HERO ── */}
       <section id="top" className="px-5 pb-12 pt-16 md:px-8 md:pt-20">
         <div className="mx-auto grid w-full max-w-[1180px] items-center gap-11 lg:grid-cols-[1.08fr_0.92fr]">
           <div className="js-reveal reveal-up">
@@ -174,15 +173,12 @@ export function PublicHome() {
               Entiende el rendimiento de todas tus redes sin perder contexto entre plataformas.
             </h1>
             <p className="mt-5 max-w-[640px] text-lg leading-8 text-slate-600">
-              MetricBrief centraliza alcance, engagement, seguidores, comparativas y alertas en una sola interfaz para que marketing, contenido y analítica trabajen con la misma lectura.
+              MetricBrief centraliza alcance, engagement, seguidores, comparativas y alertas en una sola interfaz para
+              que marketing, contenido y analitica trabajen con la misma lectura.
             </p>
 
-            {/* CTA hero: solo scroll a waitlist */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#waitlist"
-                className="accent-pill rounded-[14px] px-6 py-4 text-base font-bold shadow-soft transition hover:-translate-y-0.5"
-              >
+              <a href="#waitlist" className="accent-pill rounded-[14px] px-6 py-4 text-base font-bold shadow-soft transition hover:-translate-y-0.5">
                 Unirme a la lista de espera
               </a>
               <a href="#funcionalidades" className="inline-flex items-center gap-2 rounded-[14px] border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-800 shadow-sm transition hover:-translate-y-0.5">
@@ -192,7 +188,6 @@ export function PublicHome() {
             </div>
           </div>
 
-          {/* Dashboard preview card — sin cambios */}
           <div className="js-reveal reveal-up rounded-[30px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.84),rgba(255,255,255,0.94))] p-5 shadow-[0_24px_60px_rgba(37,99,235,0.10)]">
             <div className="relative overflow-hidden rounded-[24px] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]">
               <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
@@ -248,7 +243,6 @@ export function PublicHome() {
         </div>
       </section>
 
-      {/* ── STATS ── */}
       <section className="px-5 pb-4 md:px-8">
         <div ref={statsRef} className="mx-auto grid w-full max-w-[1180px] gap-4 md:grid-cols-2 xl:grid-cols-4">
           {statTargets.map((item) => (
@@ -264,15 +258,14 @@ export function PublicHome() {
         </div>
       </section>
 
-      {/* ── FUNCIONALIDADES ── */}
       <section id="funcionalidades" className="px-5 py-24 md:px-8">
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="section-title js-reveal reveal-up">
             <h2 className="font-['Sora'] text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] text-slate-900">
-              Una capa operativa para tomar decisiones con más contexto y menos ruido.
+              Una capa operativa para tomar decisiones con mas contexto y menos ruido.
             </h2>
             <p className="mt-3 max-w-[700px] text-base leading-7 text-slate-600">
-              Disenado para equipos de contenido, marketing y analítica que necesitan comparar canales, detectar oportunidades y convertir datos dispersos en una lectura accionable.
+              Disenado para equipos de contenido, marketing y analitica que necesitan comparar canales, detectar oportunidades y convertir datos dispersos en una lectura accionable.
             </p>
           </div>
 
@@ -282,14 +275,26 @@ export function PublicHome() {
               return (
                 <article
                   key={benefit.title}
-                  className={`card js-reveal reveal-up rounded-[22px] p-6 ${benefit.highlighted ? "border-blue-600/20 bg-[linear-gradient(135deg,#2563EB,#4F46E5)] text-white shadow-[0_24px_54px_rgba(79,70,229,0.18)]" : ""}`}
+                  className={`card js-reveal reveal-up rounded-[22px] p-6 ${
+                    benefit.highlighted
+                      ? "border-blue-600/20 bg-[linear-gradient(135deg,#2563EB,#4F46E5)] text-white shadow-[0_24px_54px_rgba(79,70,229,0.18)]"
+                      : ""
+                  }`}
                   style={{ transitionDelay: `${index * 70}ms` }}
                 >
-                  <div className={`mb-4 grid h-[46px] w-[46px] place-items-center rounded-[14px] ${benefit.highlighted ? "bg-white/15 text-white" : "bg-[linear-gradient(135deg,rgba(37,99,235,0.14),rgba(56,189,248,0.18))] text-blue-600"}`}>
+                  <div
+                    className={`mb-4 grid h-[46px] w-[46px] place-items-center rounded-[14px] ${
+                      benefit.highlighted
+                        ? "bg-white/15 text-white"
+                        : "bg-[linear-gradient(135deg,rgba(37,99,235,0.14),rgba(56,189,248,0.18))] text-blue-600"
+                    }`}
+                  >
                     <Icon size={18} />
                   </div>
                   <h3 className="font-['Sora'] text-lg font-extrabold">{benefit.title}</h3>
-                  <p className={`mt-2 text-sm leading-7 ${benefit.highlighted ? "text-white/80" : "text-slate-500"}`}>{benefit.description}</p>
+                  <p className={`mt-2 text-sm leading-7 ${benefit.highlighted ? "text-white/80" : "text-slate-500"}`}>
+                    {benefit.description}
+                  </p>
                 </article>
               );
             })}
@@ -297,7 +302,6 @@ export function PublicHome() {
         </div>
       </section>
 
-      {/* ── PLATAFORMAS ── */}
       <section id="plataformas" className="px-5 pb-16 md:px-8">
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="section-title js-reveal reveal-up">
@@ -322,41 +326,39 @@ export function PublicHome() {
         </div>
       </section>
 
-      {/* ── WAITLIST ── */}
       <section id="waitlist" className="px-5 py-16 md:px-8">
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="js-reveal reveal-up rounded-[32px] bg-[linear-gradient(135deg,#2563EB,#4F46E5)] px-7 py-14 text-white shadow-[0_24px_60px_rgba(37,99,235,0.20)] md:px-12">
-
-            {/* Badge "En desarrollo" */}
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/80 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" />
               Producto en desarrollo activo
             </span>
 
-            <h2 className="font-['Sora'] text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] max-w-[700px]">
-              MetricBrief llega pronto.<br/>Sé el primero en probarlo.
+            <h2 className="max-w-[700px] font-['Sora'] text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1]">
+              MetricBrief llega pronto.
+              <br />
+              Se el primero en probarlo.
             </h2>
             <p className="mt-4 max-w-[560px] text-base leading-8 text-white/75">
-              Estamos construyendo la capa de analítica unificada que necesitan equipos y creadores. Deja tu email y te avisamos cuando abramos acceso anticipado.
+              Estamos construyendo la capa de analitica unificada que necesitan equipos y creadores. Deja tu email y te avisamos cuando abramos acceso anticipado.
             </p>
 
-            {/* Form */}
             <form onSubmit={handleWaitlist} className="mt-8 flex max-w-[500px] flex-col gap-3 sm:flex-row">
               <input
                 type="email"
                 placeholder="tu@email.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 disabled={waitlistStatus === "success"}
                 className="flex-1 rounded-[14px] border border-white/20 bg-white/10 px-5 py-4 text-sm font-medium text-white placeholder-white/40 backdrop-blur-sm outline-none transition focus:border-white/50 focus:bg-white/15 disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={waitlistStatus === "loading" || waitlistStatus === "success"}
-                className="rounded-[14px] bg-white px-6 py-4 text-sm font-bold text-blue-700 shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 whitespace-nowrap"
+                className="rounded-[14px] bg-white px-6 py-4 text-sm font-bold text-blue-700 shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 whitespace-nowrap"
               >
-                {waitlistStatus === "loading" && "Guardando…"}
-                {waitlistStatus === "success" && "✓ Apuntado"}
+                {waitlistStatus === "loading" && "Guardando..."}
+                {waitlistStatus === "success" && "OK Apuntado"}
                 {waitlistStatus === "idle" && "Apuntarme"}
                 {waitlistStatus === "error" && "Reintentar"}
               </button>
@@ -369,19 +371,16 @@ export function PublicHome() {
               </p>
             )}
 
-            {/* Social proof */}
-            <p className="mt-6 text-xs text-white/45">
-              Sin spam. Solo una notificación cuando esté listo.
-            </p>
+            <p className="mt-6 text-xs text-white/45">Sin spam. Solo una notificacion cuando este listo.</p>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
       <footer className="bg-[linear-gradient(180deg,#111827_0%,#0F172A_100%)] px-5 py-9 text-white/75 md:px-8">
         <div className="mx-auto flex w-full max-w-[1180px] flex-wrap items-center justify-between gap-5">
-          <div className="rounded-[20px] bg-white/95 px-4 py-3 shadow-[0_14px_34px_rgba(15,23,42,0.16)]">
-            <BrandLogo width={176} className="h-auto w-[176px]" />
+          <div>
+            <div className="font-['Sora'] text-xl font-extrabold leading-none text-white">MetricBrief</div>
+            <div className="mt-1 text-xs font-semibold text-white/55">Unified social media analytics</div>
           </div>
           <nav className="flex flex-wrap gap-5 text-sm font-semibold">
             <Link to="/privacy" className="hover:text-white">Politica de privacidad</Link>

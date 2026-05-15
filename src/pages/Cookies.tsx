@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { BrandLogo } from "../components/BrandLogo";
 
 const sections = [
   {
@@ -29,8 +28,11 @@ export function Cookies() {
     <main className="min-h-screen bg-[linear-gradient(180deg,#eff6ff_0%,#f8fafc_22%,#ffffff_100%)]">
       <div className="mx-auto max-w-5xl px-6 py-6 md:px-10">
         <header className="flex flex-col gap-4 border-b border-white/60 pb-6 md:flex-row md:items-center md:justify-between">
-          <Link to="/" className="inline-flex rounded-[18px] bg-white/90 px-3 py-2 shadow-[0_10px_30px_rgba(79,70,229,0.12)]">
-            <BrandLogo width={164} className="h-auto w-[164px]" />
+          <Link to="/" className="inline-flex items-center gap-3">
+            <div>
+              <span className="block font-['Sora'] text-2xl font-extrabold text-slate-900">MetricBrief</span>
+              <span className="text-sm text-slate-500">Cross-platform intelligence</span>
+            </div>
           </Link>
           <nav className="flex flex-wrap gap-3 text-sm font-semibold text-slate-600">
             <Link className="rounded-full px-3 py-2 transition hover:bg-white/70" to="/">Inicio</Link>
