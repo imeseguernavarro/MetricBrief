@@ -180,7 +180,7 @@ export function PublicHome() {
               Entiende el rendimiento de todas tus redes sin perder contexto entre plataformas.
             </h1>
             <p className="mt-5 max-w-[640px] text-lg leading-8 text-slate-600">
-              InsightHub centraliza alcance, engagement, seguidores, comparativas y alertas en una sola interfaz para que marketing, contenido y analitica trabajen con la misma lectura.
+              InsightHub centraliza alcance, engagement, seguidores, comparativas y alertas en una sola interfaz para que marketing, contenido y analítica trabajen con la misma lectura.
             </p>
 
             {/* CTA hero: solo scroll a waitlist */}
@@ -275,7 +275,7 @@ export function PublicHome() {
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="section-title js-reveal reveal-up">
             <h2 className="font-['Sora'] text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] text-slate-900">
-              Una capa operativa para tomar decisiones con mas contexto y menos ruido.
+              Una capa operativa para tomar decisiones con más contexto y menos ruido.
             </h2>
             <p className="mt-3 max-w-[700px] text-base leading-7 text-slate-600">
               Disenado para equipos de contenido, marketing y analitica que necesitan comparar canales, detectar oportunidades y convertir datos dispersos en una lectura accionable.
