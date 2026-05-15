@@ -90,7 +90,6 @@ function LegalLayout({
             <Link className="rounded-full px-3 py-2 transition hover:bg-white/70" to="/">Inicio</Link>
             <Link className="rounded-full px-3 py-2 transition hover:bg-white/70" to="/terms">Términos</Link>
             <Link className="rounded-full px-3 py-2 transition hover:bg-white/70" to="/cookies">Cookies</Link>
-            <Link className="accent-pill rounded-full px-5 py-3 shadow-soft transition hover:opacity-90" to="/login">Entrar</Link>
           </nav>
         </header>
  

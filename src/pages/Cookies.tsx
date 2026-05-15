@@ -65,12 +65,77 @@ const toneClasses: Record<string, string> = {
 
 export function Cookies() {
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#eff6ff_0%,#f8fafc_22%,#ffffff_100%)]">
+    <LegalLayout
+      title="Politica de cookies"
+      intro="Informacion sobre las cookies y tecnologias similares utilizadas en MetricBrief, su finalidad y como puedes gestionarlas."
+      lastUpdated={LAST_UPDATED}
+    >
+      {sections.map((section) => (
+        <section
+          key={section.title}
+          className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-crisp"
+        >
+          <h2 className="text-xl font-black text-slate-900">{section.title}</h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600">{section.body}</p>
+        </section>
+      ))}
+
+      <section className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-crisp">
+        <h2 className="text-xl font-black text-slate-900">Finalidad de las cookies utilizadas</h2>
+        <p className="mt-2 text-sm leading-7 text-slate-600">
+          En lugar de mantener una tabla tecnica cerrada, preferimos explicar de forma clara para
+          que sirven las cookies y tecnologias similares que pueden intervenir en la experiencia del
+          producto.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {purposes.map((purpose) => (
+            <article key={purpose.title} className="rounded-2xl border border-slate-200 p-5">
+              <span
+                className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${toneClasses[purpose.tone]}`}
+              >
+                {purpose.title}
+              </span>
+              <p className="mt-4 text-sm leading-7 text-slate-600">{purpose.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-[24px] border border-blue-100 bg-blue-50/50 p-6">
+        <h2 className="text-xl font-black text-slate-900">Tienes dudas?</h2>
+        <p className="mt-3 text-sm leading-7 text-slate-600">
+          Si tienes preguntas sobre el uso de cookies o quieres ejercer tus derechos en relacion
+          con los datos tratados, contacta con nosotros. Tambien puedes consultar la{" "}
+          <Link to="/privacy" className="font-semibold text-blue-600 hover:underline">
+            Politica de privacidad
+          </Link>{" "}
+          para informacion completa sobre el tratamiento de datos personales.
+        </p>
+      </section>
+    </LegalLayout>
+  );
+}
+
+function LegalLayout({
+  title,
+  intro,
+  lastUpdated,
+  children,
+}: {
+  title: string;
+  intro: string;
+  lastUpdated: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(255,193,146,0.28),transparent_26%),linear-gradient(180deg,#f8efe8_0%,#f7f8fc_46%,#eef4fb_100%)]">
       <div className="mx-auto max-w-5xl px-6 py-6 md:px-10">
-        <header className="flex flex-col gap-4 border-b border-slate-200/60 pb-6 md:flex-row md:items-center md:justify-between">
+        <header className="flex flex-col gap-4 border-b border-white/60 pb-6 md:flex-row md:items-center md:justify-between">
           <Link to="/" className="inline-flex items-center gap-3">
             <div>
-              <span className="block font-['Sora'] text-2xl font-extrabold text-slate-900">MetricBrief</span>
+              <span className="block font-['Sora'] text-2xl font-extrabold text-slate-900">
+                MetricBrief
+              </span>
               <span className="text-sm text-slate-500">Unified social media analytics</span>
             </div>
           </Link>
@@ -90,59 +155,13 @@ export function Cookies() {
         <section className="py-10">
           <span className="eyebrow">Legal</span>
           <h1 className="mt-4 font-['Sora'] text-4xl font-extrabold text-slate-900 md:text-5xl">
-            Politica de cookies
+            {title}
           </h1>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">
-            Informacion sobre las cookies y tecnologias similares utilizadas en MetricBrief, su
-            finalidad y como puedes gestionarlas.
-          </p>
-          <p className="mt-2 text-xs text-slate-400">Ultima actualizacion: {LAST_UPDATED}</p>
+          <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">{intro}</p>
+          <p className="mt-2 text-xs text-slate-400">Ultima actualizacion: {lastUpdated}</p>
         </section>
 
-        <div className="space-y-4 pb-10">
-          {sections.map((section) => (
-            <section
-              key={section.title}
-              className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-crisp"
-            >
-              <h2 className="text-xl font-black text-slate-900">{section.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{section.body}</p>
-            </section>
-          ))}
-
-          <section className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-crisp">
-            <h2 className="text-xl font-black text-slate-900">Finalidad de las cookies utilizadas</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              En lugar de mantener una tabla tecnica cerrada, preferimos explicar de forma clara
-              para que sirven las cookies y tecnologias similares que pueden intervenir en la
-              experiencia del producto.
-            </p>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {purposes.map((purpose) => (
-                <article key={purpose.title} className="rounded-2xl border border-slate-200 p-5">
-                  <span
-                    className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${toneClasses[purpose.tone]}`}
-                  >
-                    {purpose.title}
-                  </span>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{purpose.description}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="rounded-[24px] border border-blue-100 bg-blue-50/50 p-6">
-            <h2 className="text-xl font-black text-slate-900">Tienes dudas?</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
-              Si tienes preguntas sobre el uso de cookies o quieres ejercer tus derechos en
-              relacion con los datos tratados, contacta con nosotros. Tambien puedes consultar la{" "}
-              <Link to="/privacy" className="font-semibold text-blue-600 hover:underline">
-                Politica de privacidad
-              </Link>{" "}
-              para informacion completa sobre el tratamiento de datos personales.
-            </p>
-          </section>
-        </div>
+        <div className="space-y-4 pb-10">{children}</div>
       </div>
     </main>
   );
