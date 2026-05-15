@@ -278,7 +278,7 @@ export function PublicHome() {
               Una capa operativa para tomar decisiones con más contexto y menos ruido.
             </h2>
             <p className="mt-3 max-w-[700px] text-base leading-7 text-slate-600">
-              Disenado para equipos de contenido, marketing y analitica que necesitan comparar canales, detectar oportunidades y convertir datos dispersos en una lectura accionable.
+              Disenado para equipos de contenido, marketing y analítica que necesitan comparar canales, detectar oportunidades y convertir datos dispersos en una lectura accionable.
             </p>
           </div>
 
