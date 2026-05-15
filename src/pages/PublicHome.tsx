@@ -10,10 +10,10 @@ const heroMetrics = [
 ];
 
 const statTargets = [
-  { id: "posts", prefix: "+", suffix: "K", value: 120, label: "publicaciones análizadas en paneles multired." },
-  { id: "engagement", prefix: "", suffix: "%", value: 38, label: "mejora media en engagement tras optimizar contenido." },
-  { id: "platforms", prefix: "", suffix: "", value: 12, label: "plataformas conectadas dentro de la vision del producto." },
-  { id: "tracking", prefix: "", suffix: "/7", value: 24, label: "seguimiento continuo de métricas críticas y alertas." },
+  { id: "posts", prefix: "+", suffix: "K", value: 120, label: "Publicaciones análizadas en paneles multired." },
+  { id: "engagement", prefix: "", suffix: "%", value: 38, label: "Mejora media en engagement tras optimizar contenido." },
+  { id: "platforms", prefix: "", suffix: "", value: 12, label: "Plataformas conectadas dentro de la visión del producto." },
+  { id: "tracking", prefix: "", suffix: "/7", value: 24, label: "Seguimiento continuo de métricas críticas y alertas." },
 ];
 
 const benefits = [
