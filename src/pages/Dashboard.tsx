@@ -33,7 +33,7 @@ export function Dashboard({ period, platforms, data }: { period: Period; platfor
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-white/65">
             {realModeEmpty
-              ? "Cuando completes una conexion y sincronices, veras crecimiento, contenido, audiencia y recomendaciones reales desde una sola vista."
+              ? "Cuando completes una conexión y sincronices, verás crecimiento, contenido, audiencia y recomendaciones reales desde una sola vista."
               : "El panel cruza crecimiento, timing, contenido y demografia para reducir ruido y hacer visibles las decisiones del dia."}
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">

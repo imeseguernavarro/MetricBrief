@@ -14,7 +14,7 @@ type FieldErrors = {
 const dashboardStats = [
   { label: "TikTok", metric: "2.8M alcance", sub: "+18.4% esta semana", icon: Music2 },
   { label: "Instagram", metric: "6.1% engagement", sub: "Guardados +21%", icon: CheckCircle2 },
-  { label: "YouTube", metric: "+11.2% suscriptores", sub: "Retencion estable", icon: Youtube },
+  { label: "YouTube", metric: "+11.2% suscriptores", sub: "Retención estable", icon: Youtube },
 ];
 
 function validateEmail(value: string) {

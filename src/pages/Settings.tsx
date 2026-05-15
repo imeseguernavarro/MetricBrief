@@ -22,7 +22,7 @@ const sections: SettingsSection[] = [
   {
     id: "profile",
     label: "Perfil",
-    description: "Personaliza la informacion del usuario",
+    description: "Personaliza la información del usuario",
     icon: User2,
   },
   {
@@ -34,7 +34,7 @@ const sections: SettingsSection[] = [
   {
     id: "security",
     label: "Seguridad",
-    description: "Privacidad, acceso y exportacion",
+    description: "Privacidad, acceso y exportación",
     icon: Shield,
   },
 ];
@@ -42,7 +42,7 @@ const sections: SettingsSection[] = [
 const availablePlatforms = [
   { name: "Threads", description: "Extension editorial para marcas personales" },
   { name: "LinkedIn", description: "Contenido profesional y crecimiento B2B" },
-  { name: "Twitch", description: "Streaming, clips y retencion" },
+  { name: "Twitch", description: "Streaming, clips y retención" },
 ];
 
 export function Settings({
@@ -69,7 +69,7 @@ export function Settings({
         <span className="eyebrow">Configuracion</span>
         <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-900">Ajustes de la cuenta</h2>
         <p className="mt-1 max-w-3xl text-sm text-slate-500">
-          Organiza tus plataformas, el perfil del usuario, las notificaciones y los controles de seguridad desde un segundo menu interno.
+          Organiza tus plataformas, el perfil del usuario, las notificaciones y los controles de seguridad desde un segundo menú interno.
         </p>
       </section>
 
