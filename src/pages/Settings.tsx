@@ -209,9 +209,9 @@ export function Settings({
 
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
                   <Field label="Nombre completo" value={profile.name} />
-                  <Field label="Correo" value="hello@insighthub.app" />
+                  <Field label="Correo" value="hello@metricbrief.app" />
                   <Field label="Rol" value={profile.role} />
-                  <Field label="Marca personal" value="@insighthubapp" />
+                  <Field label="Marca personal" value="@metricbriefapp" />
                 </div>
 
                 <button className="accent-pill mt-5 rounded-xl px-4 py-2 text-sm font-bold">Guardar cambios</button>

@@ -1,7 +1,7 @@
 import { ArrowRight, Bell, Boxes, ChartNoAxesCombined, CheckCircle2, LayoutGrid, Sparkles, Users2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { HubLogo } from "../components/HubLogo";
+import { BrandLogo } from "../components/BrandLogo";
 
 const heroMetrics = [
   { label: "TikTok", value: "+18.4%", detail: "Alcance 2.8M", trend: "+32K seguidores", tone: "success" as const },
@@ -144,14 +144,8 @@ export function PublicHome() {
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[rgba(248,250,252,0.82)] backdrop-blur-xl">
         <div className="mx-auto flex min-h-[78px] w-full max-w-[1180px] items-center justify-between gap-5 px-5 md:px-8">
-          <a href="#top" className="flex min-w-0 items-center gap-3">
-            <div className="overflow-hidden rounded-[14px] shadow-[0_10px_30px_rgba(79,70,229,0.18)]">
-              <HubLogo />
-            </div>
-            <div className="min-w-0">
-              <div className="font-['Sora'] text-xl font-extrabold leading-none text-slate-900">InsightHub</div>
-              <div className="mt-1 text-xs font-semibold text-slate-500">All your metrics. One view.</div>
-            </div>
+          <a href="#top" className="flex min-w-0 items-center">
+            <BrandLogo width={168} className="h-auto w-[168px]" />
           </a>
 
           <nav className="hidden items-center gap-6 text-sm font-semibold text-slate-600 lg:flex">
@@ -180,7 +174,7 @@ export function PublicHome() {
               Entiende el rendimiento de todas tus redes sin perder contexto entre plataformas.
             </h1>
             <p className="mt-5 max-w-[640px] text-lg leading-8 text-slate-600">
-              InsightHub centraliza alcance, engagement, seguidores, comparativas y alertas en una sola interfaz para que marketing, contenido y analítica trabajen con la misma lectura.
+              MetricBrief centraliza alcance, engagement, seguidores, comparativas y alertas en una sola interfaz para que marketing, contenido y analítica trabajen con la misma lectura.
             </p>
 
             {/* CTA hero: solo scroll a waitlist */}
@@ -202,7 +196,7 @@ export function PublicHome() {
           <div className="js-reveal reveal-up rounded-[30px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.84),rgba(255,255,255,0.94))] p-5 shadow-[0_24px_60px_rgba(37,99,235,0.10)]">
             <div className="relative overflow-hidden rounded-[24px] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]">
               <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
-                <div className="text-sm font-extrabold text-slate-900">InsightHub Overview</div>
+                <div className="text-sm font-extrabold text-slate-900">MetricBrief Overview</div>
                 <span className="rounded-full bg-blue-50 px-3 py-2 text-[12px] font-bold text-blue-700">Live tracking</span>
               </div>
 
@@ -311,7 +305,7 @@ export function PublicHome() {
               Preparado para trabajar con las plataformas que concentran tu operativa.
             </h2>
             <p className="mt-3 max-w-[700px] text-base leading-7 text-slate-600">
-              InsightHub se plantea como una capa unificada para canales de crecimiento, comunidad, contenido de marca y reporting ejecutivo.
+              MetricBrief se plantea como una capa unificada para canales de crecimiento, comunidad, contenido de marca y reporting ejecutivo.
             </p>
           </div>
 
@@ -340,7 +334,7 @@ export function PublicHome() {
             </span>
 
             <h2 className="font-['Sora'] text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] max-w-[700px]">
-              InsightHub llega pronto.<br/>Sé el primero en probarlo.
+              MetricBrief llega pronto.<br/>Sé el primero en probarlo.
             </h2>
             <p className="mt-4 max-w-[560px] text-base leading-8 text-white/75">
               Estamos construyendo la capa de analítica unificada que necesitan equipos y creadores. Deja tu email y te avisamos cuando abramos acceso anticipado.
@@ -386,20 +380,14 @@ export function PublicHome() {
       {/* ── FOOTER ── */}
       <footer className="bg-[linear-gradient(180deg,#111827_0%,#0F172A_100%)] px-5 py-9 text-white/75 md:px-8">
         <div className="mx-auto flex w-full max-w-[1180px] flex-wrap items-center justify-between gap-5">
-          <div className="flex items-center gap-3">
-            <div className="overflow-hidden rounded-[14px] shadow-[0_10px_30px_rgba(79,70,229,0.18)]">
-              <HubLogo />
-            </div>
-            <div>
-              <div className="font-['Sora'] text-xl font-extrabold leading-none text-white">InsightHub</div>
-              <div className="mt-1 text-xs font-semibold text-white/55">All your metrics. One view.</div>
-            </div>
+          <div className="rounded-[20px] bg-white/95 px-4 py-3 shadow-[0_14px_34px_rgba(15,23,42,0.16)]">
+            <BrandLogo width={176} className="h-auto w-[176px]" />
           </div>
           <nav className="flex flex-wrap gap-5 text-sm font-semibold">
             <Link to="/privacy" className="hover:text-white">Politica de privacidad</Link>
             <Link to="/terms" className="hover:text-white">Terminos de servicio</Link>
             <Link to="/cookies" className="hover:text-white">Cookies</Link>
-            <a href="mailto:demo@insighthub.app" className="hover:text-white">Contacto</a>
+            <a href="mailto:demo@metricbrief.app" className="hover:text-white">Contacto</a>
           </nav>
         </div>
       </footer>

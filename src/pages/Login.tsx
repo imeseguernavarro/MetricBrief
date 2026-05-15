@@ -1,7 +1,7 @@
 import { AlertCircle, Check, CheckCircle2, Eye, EyeOff, Lock, Mail, Music2, ShieldCheck, Youtube } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { HubLogo } from "../components/HubLogo";
+import { BrandLogo } from "../components/BrandLogo";
 
 type AuthMode = "signin" | "signup";
 
@@ -107,14 +107,14 @@ export function Login({
 
       if (mode === "signin") {
         await onEmailSignIn(email, password);
-        setSuccessMessage("Acceso correcto. Redirigiendo a tu espacio de InsightHub...");
+        setSuccessMessage("Acceso correcto. Redirigiendo a tu espacio de MetricBrief...");
         window.setTimeout(() => navigate("/dashboard"), 500);
       } else {
         const result = await onEmailSignUp(email, password);
         const session = (result as { session?: unknown } | undefined)?.session;
 
         if (session) {
-          setSuccessMessage("Cuenta creada correctamente. Ya puedes empezar a usar InsightHub.");
+          setSuccessMessage("Cuenta creada correctamente. Ya puedes empezar a usar MetricBrief.");
           window.setTimeout(() => navigate("/dashboard"), 500);
         } else {
           setSuccessMessage("Cuenta creada. Revisa tu correo para confirmar el acceso.");
@@ -156,14 +156,8 @@ export function Login({
 
           <div className="relative z-10 flex w-full flex-col justify-between p-10 xl:p-14">
             <div className="max-w-[520px]">
-              <Link to="/" className="inline-flex items-center gap-3">
-                <div className="overflow-hidden rounded-[16px] shadow-[0_16px_40px_rgba(37,99,235,0.24)]">
-                  <HubLogo size={52} rounded={16} />
-                </div>
-                <div>
-                  <div className="font-['Sora'] text-2xl font-extrabold text-white">InsightHub</div>
-                  <div className="mt-1 text-sm font-medium text-slate-300">All your metrics. One view.</div>
-                </div>
+              <Link to="/" className="inline-flex rounded-[22px] bg-white/95 px-4 py-3 shadow-[0_18px_44px_rgba(15,23,42,0.26)]">
+                <BrandLogo width={184} className="h-auto w-[184px]" />
               </Link>
 
               <div className="mt-16">
@@ -240,14 +234,8 @@ export function Login({
         <section className="flex min-h-screen items-center justify-center px-5 py-8 md:px-8">
           <div className="w-full max-w-[540px]">
             <div className="mb-8 flex items-center justify-between lg:hidden">
-              <Link to="/" className="inline-flex items-center gap-3">
-                <div className="overflow-hidden rounded-[14px] shadow-[0_10px_30px_rgba(79,70,229,0.18)]">
-                  <HubLogo />
-                </div>
-                <div>
-                  <div className="font-['Sora'] text-xl font-extrabold text-slate-900">InsightHub</div>
-                  <div className="text-xs font-semibold text-slate-500">All your metrics. One view.</div>
-                </div>
+              <Link to="/" className="inline-flex rounded-[18px] bg-white px-3 py-2 shadow-[0_10px_30px_rgba(79,70,229,0.12)]">
+                <BrandLogo width={154} className="h-auto w-[154px]" />
               </Link>
             </div>
 
@@ -257,12 +245,12 @@ export function Login({
                   Acceso seguro
                 </span>
                 <h2 className="mt-5 font-['Sora'] text-3xl font-extrabold text-slate-900 md:text-4xl">
-                  {mode === "signin" ? "Entra en tu cuenta" : "Crea tu cuenta de InsightHub"}
+                  {mode === "signin" ? "Entra en tu cuenta" : "Crea tu cuenta de MetricBrief"}
                 </h2>
                 <p className="mt-3 text-base leading-7 text-slate-600">
                   {mode === "signin"
                     ? "Accede con Google o con tu email para entrar en el panel."
-                    : "Registra tu acceso con email y contraseña para usar InsightHub sin depender de Google."}
+                    : "Registra tu acceso con email y contraseña para usar MetricBrief sin depender de Google."}
                 </p>
               </div>
 

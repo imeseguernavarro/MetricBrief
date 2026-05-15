@@ -1,6 +1,6 @@
-# InsightHub
+# MetricBrief
 
-InsightHub es una web SaaS con landing publica, login, panel privado y una base real de integraciones sociales sobre Supabase.
+MetricBrief es una web SaaS con landing publica, login, panel privado y una base real de integraciones sociales sobre Supabase.
 
 Incluye:
 

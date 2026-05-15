@@ -300,7 +300,7 @@ function MobileNav() {
         >
           <span className="flex items-center gap-2">
             <BarChart3 size={18} />
-            InsightHub
+            MetricBrief
           </span>
           <span className="flex items-center gap-2 text-slate-500">
             <Menu size={17} />
