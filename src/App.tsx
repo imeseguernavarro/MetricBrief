@@ -13,6 +13,7 @@ import { sendPasswordReset, signInWithGoogle, signInWithPassword, signOut, signU
 import { emptyCreatorOSData, fallbackCreatorOSData } from "./integrations/supabase/creatoros";
 import { demoCreatorUserId } from "./integrations/supabase/session";
 import { startTikTokOAuth, syncTikTok } from "./integrations/supabase/tiktok";
+import { startXOAuth, syncX } from "./integrations/supabase/x";
 import { startYouTubeOAuth, syncYouTube } from "./integrations/supabase/youtube";
 import { Audience } from "./pages/Audience";
 import { Cookies } from "./pages/Cookies";
@@ -94,6 +95,7 @@ export default function App() {
     const platformEvents = [
       { param: "youtube_connected", name: "YouTube" as const },
       { param: "tiktok_connected", name: "TikTok" as const },
+      { param: "x_connected", name: "X" as const },
     ];
     const triggered = platformEvents.find((event) => params.get(event.param) === "1");
 
@@ -144,8 +146,15 @@ export default function App() {
       return;
     }
 
+    if (platform.name === "X") {
+      await startXOAuth({
+        redirectTo: `${window.location.origin}/settings`,
+      });
+      return;
+    }
+
     if (authConfigured && user && platform.name === "Instagram") {
-      throw new Error("Instagram sera la siguiente integracion real. Ahora mismo ya puedes conectar YouTube y TikTok.");
+      throw new Error("Instagram sera la siguiente integracion real. Ahora mismo ya puedes conectar YouTube, TikTok y X.");
     }
 
     togglePlatform(platform.name);
@@ -156,8 +165,8 @@ export default function App() {
       setSyncing(true);
       const connectedNames = new Set(platforms.filter((platform) => platform.connected).map((platform) => platform.name));
 
-      if (!connectedNames.has("YouTube") && !connectedNames.has("TikTok")) {
-        throw new Error("Conecta YouTube o TikTok antes de sincronizar.");
+      if (!connectedNames.has("YouTube") && !connectedNames.has("TikTok") && !connectedNames.has("X")) {
+        throw new Error("Conecta YouTube, TikTok o X antes de sincronizar.");
       }
 
       if (connectedNames.has("YouTube")) {
@@ -166,6 +175,10 @@ export default function App() {
 
       if (connectedNames.has("TikTok")) {
         await syncTikTok();
+      }
+
+      if (connectedNames.has("X")) {
+        await syncX();
       }
 
       await refresh();

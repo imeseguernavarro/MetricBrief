@@ -3,14 +3,15 @@ import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YA
 import type { GrowthPoint, Platform } from "../data/mock";
 import { compact } from "../utils";
 
-const colors: Record<Platform, string> = { TikTok: "#101217", Instagram: "#ff5a66", YouTube: "#ff0033" };
-const allPlatforms: Platform[] = ["TikTok", "Instagram", "YouTube"];
+const colors: Record<Platform, string> = { TikTok: "#101217", Instagram: "#ff5a66", YouTube: "#ff0033", X: "#0f172a" };
+const allPlatforms: Platform[] = ["TikTok", "Instagram", "YouTube", "X"];
 
 export function GrowthChart({ data }: { data: GrowthPoint[] }) {
   const [visible, setVisible] = useState<Record<Platform, boolean>>({
     TikTok: true,
     Instagram: true,
     YouTube: true,
+    X: true,
   });
 
   return (

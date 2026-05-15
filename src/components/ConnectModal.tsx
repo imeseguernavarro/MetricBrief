@@ -67,7 +67,7 @@ export function ConnectModal({
         {error && <div className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
         <div className="mt-2 flex items-center gap-2 rounded-md bg-sky/10 px-3 py-2 text-sm text-blue-700">
           <CheckCircle2 size={16} />
-          YouTube y TikTok ya pueden iniciar OAuth real via Supabase. Instagram sera la siguiente integracion real.
+          YouTube, TikTok y X ya pueden iniciar OAuth real via Supabase. Instagram sera la siguiente integracion real.
         </div>
       </div>
     </Modal>

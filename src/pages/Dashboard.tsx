@@ -43,7 +43,7 @@ export function Dashboard({ period, platforms, data }: { period: Period; platfor
             </div>
             <div className="rounded-2xl bg-white/14 p-4 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-[0.14em] text-white/60">Plataformas online</p>
-              <p className="mt-2 text-2xl font-black">{connectedCount}/3</p>
+              <p className="mt-2 text-2xl font-black">{connectedCount}/{platforms.length}</p>
             </div>
             <div className="rounded-2xl bg-white/14 p-4 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-[0.14em] text-white/60">Ventana top</p>

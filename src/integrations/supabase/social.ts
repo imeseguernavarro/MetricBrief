@@ -2,7 +2,7 @@ import { isSupabaseConfigured, supabase, supabasePublicKey } from "./client";
 
 const functionsUrl = import.meta.env.VITE_SUPABASE_FUNCTIONS_URL;
 
-export type SocialProvider = "youtube" | "tiktok";
+export type SocialProvider = "youtube" | "tiktok" | "x";
 
 async function getAuthHeaders(providerLabel: string) {
   if (!supabase) {

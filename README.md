@@ -1,4 +1,4 @@
-# MetricBrief
+﻿# MetricBrief
 
 MetricBrief es una web SaaS con landing publica, login, panel privado y una base real de integraciones sociales sobre Supabase.
 
@@ -8,7 +8,7 @@ Incluye:
 - Login en `/login`
 - App privada en `/dashboard`, `/content`, `/audience`, `/insights`, `/settings`
 - Paginas legales en `/privacy`, `/terms` y `/cookies`
-- Integraciones reales de YouTube y TikTok via Supabase Edge Functions
+- Integraciones reales de YouTube, TikTok y X via Supabase Edge Functions
 
 El proyecto todavia conserva datos simulados en partes del dashboard mientras se completan las integraciones reales restantes.
 
@@ -37,12 +37,12 @@ Si `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` no existen, la app sigue funci
 1. Crear proyecto en Supabase
 2. Ejecutar la migracion SQL
 3. Configurar `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`
-4. Añadir secretos OAuth en Supabase para YouTube, Instagram y TikTok
+4. Anadir secretos OAuth en Supabase para YouTube, TikTok y X
 5. Completar o ampliar las integraciones reales restantes
 
-## Integraciones reales actuales: YouTube + TikTok
+## Integraciones reales actuales: YouTube + TikTok + X
 
-Ya queda preparada una primera base real de YouTube y TikTok via Supabase:
+Ya queda preparada una primera base real de YouTube, TikTok y X via Supabase:
 
 - `supabase/functions/youtube-oauth-start`
 - `supabase/functions/youtube-oauth-callback`
@@ -52,6 +52,10 @@ Ya queda preparada una primera base real de YouTube y TikTok via Supabase:
 - `supabase/functions/tiktok-sync`
 - `src/integrations/supabase/youtube.ts`
 - `src/integrations/supabase/tiktok.ts`
+- `supabase/functions/x-oauth-start`
+- `supabase/functions/x-oauth-callback`
+- `supabase/functions/x-sync`
+- `src/integrations/supabase/x.ts`
 
 ### Secrets necesarios en Supabase
 
@@ -61,6 +65,9 @@ Ya queda preparada una primera base real de YouTube y TikTok via Supabase:
 - `TIKTOK_CLIENT_KEY`
 - `TIKTOK_CLIENT_SECRET`
 - `TIKTOK_REDIRECT_URI`
+- `X_CLIENT_ID`
+- `X_CLIENT_SECRET`
+- `X_REDIRECT_URI`
 - `SERVICE_ROLE_KEY`
 
 ### Redirect URI sugerida
@@ -77,6 +84,12 @@ Y para TikTok:
 https://<project-ref>.supabase.co/functions/v1/tiktok-oauth-callback
 ```
 
+Y para X:
+
+```text
+https://<project-ref>.supabase.co/functions/v1/x-oauth-callback
+```
+
 ### Que sincroniza
 
 - Canal de YouTube autenticado
@@ -88,10 +101,13 @@ https://<project-ref>.supabase.co/functions/v1/tiktok-oauth-callback
 - Perfil autenticado de TikTok
 - Ultimos videos publicados en TikTok
 - Seguidores y evolucion basica desde snapshots propios
+- Perfil autenticado de X
+- Ultimos posts publicados en X
+- Seguidores y evolucion basica desde snapshots propios
 
 ### Siguiente paso real
 
-Cuando tengas Google Cloud y TikTok for Developers configurados, el frontend puede iniciar la conexion llamando a `startYouTubeOAuth({ redirectTo })` y `startTikTokOAuth({ redirectTo })`.
+Cuando tengas Google Cloud, TikTok for Developers y X Developers configurados, el frontend puede iniciar la conexion llamando a `startYouTubeOAuth({ redirectTo })`, `startTikTokOAuth({ redirectTo })` y `startXOAuth({ redirectTo })`.
 
 ### Seed demo para probar sin Auth completo
 
@@ -128,3 +144,4 @@ npm run dev
 - `/audience`
 - `/insights`
 - `/settings`
+

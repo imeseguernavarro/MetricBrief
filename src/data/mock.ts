@@ -1,4 +1,4 @@
-export type Platform = "TikTok" | "Instagram" | "YouTube";
+export type Platform = "TikTok" | "Instagram" | "YouTube" | "X";
 export type Period = "7d" | "30d" | "90d" | "1y";
 
 export type PlatformStatus = {
@@ -15,6 +15,7 @@ export type GrowthPoint = {
   TikTok: number;
   Instagram: number;
   YouTube: number;
+  X: number;
 };
 
 export type Post = {
@@ -40,6 +41,7 @@ export const initialPlatforms: PlatformStatus[] = [
   { name: "TikTok", connected: true, color: "#111827", handle: "@maravega", followers: 486200, change: 12.8 },
   { name: "Instagram", connected: true, color: "#ff5a66", handle: "@mara.studio", followers: 214900, change: 7.4 },
   { name: "YouTube", connected: true, color: "#ff0033", handle: "@MaraVega", followers: 98200, change: 4.1 },
+  { name: "X", connected: false, color: "#0f172a", handle: "@metricbrief", followers: 0, change: 0 },
 ];
 
 const periods: Record<Period, number> = { "7d": 7, "30d": 30, "90d": 90, "1y": 365 };
@@ -55,6 +57,7 @@ export const growthSeries: Record<Period, GrowthPoint[]> = Object.fromEntries(
         TikTok: Math.round(414000 + factor * 72200 + Math.sin(index * 0.8) * 4200),
         Instagram: Math.round(190000 + factor * 24900 + Math.cos(index * 0.6) * 2600),
         YouTube: Math.round(88300 + factor * 9900 + Math.sin(index * 0.45) * 1400),
+        X: Math.round(12000 + factor * 3100 + Math.cos(index * 0.4) * 520),
       };
     });
     return [period, points];

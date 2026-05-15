@@ -139,6 +139,7 @@ export async function loadCreatorOSData(userId?: string): Promise<CreatorOSData>
 function platformColor(platform: string) {
   if (platform === "Instagram") return "#ff5a66";
   if (platform === "YouTube") return "#ff0033";
+  if (platform === "X") return "#0f172a";
   return "#111827";
 }
 
@@ -252,6 +253,7 @@ function sliceSeries(
     TikTok: findPoint(reconstructed.get("TikTok"), point.date),
     Instagram: findPoint(reconstructed.get("Instagram"), point.date),
     YouTube: findPoint(reconstructed.get("YouTube"), point.date),
+    X: findPoint(reconstructed.get("X"), point.date),
   }));
 }
 
@@ -267,6 +269,7 @@ function monthlySeries(reconstructed: Map<string, Array<{ date: string; total: n
       TikTok: findPoint(reconstructed.get("TikTok"), point.date),
       Instagram: findPoint(reconstructed.get("Instagram"), point.date),
       YouTube: findPoint(reconstructed.get("YouTube"), point.date),
+      X: findPoint(reconstructed.get("X"), point.date),
     });
   }
 
